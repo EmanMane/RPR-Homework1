@@ -23,5 +23,5 @@ It is only necessary to implement the algorithm for expressions delimited by par
 You can assume that all expressions will be space-separated for easier parsing of the input expression. The expression ( 1 + ( 5 * 20 ) ) is considered valid while the expression ( 1 + ( 5* 20)) is considered invalid. This is one convenience that will help you to code your homework more easily.
 
 IMPORTANT NOTE:
-Because of the input through the command line, the '*' operator will be replaced with 'x' (shell errors, basically the '*' symbol has a functionality in cmd and cannot be considered as input.
+Because of the input through the command line, the star operator will be replaced with 'x' (shell errors, basically the star symbol has a functionality in cmd and cannot be considered as input.
 We could bypass this by writing "a '* 'b" but this simply looks ugly
