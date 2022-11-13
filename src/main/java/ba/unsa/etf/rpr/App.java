@@ -1,5 +1,7 @@
 package ba.unsa.etf.rpr;
 
+import java.util.Objects;
+
 import static ba.unsa.etf.rpr.ExpressionEvaluator.*;
 
 /**
@@ -14,7 +16,7 @@ public class App
      * @param args array of strings in format ( a + ( b - ( c * ( d / ( sqrt e ) ) ) ) )
      */
     public static void main(String[] args){
-        if (args.length % 2 == 0){
+        if (!Objects.equals(args[0], "(")){
             throw new RuntimeException(errorMessage);
         }
         StringBuilder input = new StringBuilder("");
