@@ -56,13 +56,13 @@ class ExpressionEvaluatorTest {
             double x = ExpressionEvaluator.evaluate("( sqrt )");
         });
     }
-/*
+
     @Test
     void testEvaluate8() {
         assertThrows(RuntimeException.class, () -> {
             double x = ExpressionEvaluator.evaluate("( 1 + ( sqrt ) )");
         });
-    }*/
+    }
 
     @Test
     void testEvaluate9() {

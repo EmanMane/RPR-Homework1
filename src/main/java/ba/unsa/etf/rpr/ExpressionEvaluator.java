@@ -20,6 +20,8 @@ public class ExpressionEvaluator {
      * evaluate method that receives a string and calculates its value using Dijkstra's Algorithm
      */
     public static double evaluate(String s){
+        operators.removeAllElements();
+        operands.removeAllElements();
         String[] arrOfStr = s.split(" ");
         if(arrOfStr.length<4) throw new RuntimeException(errorMessage);
         for(String x : arrOfStr){
@@ -30,7 +32,7 @@ public class ExpressionEvaluator {
             else if(x.equals("x"))    operators.push(x);
             else if(x.equals("/"))    operators.push(x);
             else if(x.equals("sqrt")) operators.push(x);
-            else if(x.equals(")")) {
+            else if(x.equals(")")){
                 if(operators.size()>operands.size()) throw new RuntimeException(errorMessage);
                 String operator = operators.pop();
                 double operand = operands.pop();
