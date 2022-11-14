@@ -21,6 +21,7 @@ public class ExpressionEvaluator {
      */
     public static double evaluate(String s){
         String[] arrOfStr = s.split(" ");
+        if(arrOfStr.length<4) throw new RuntimeException(errorMessage);
         for(String x : arrOfStr){
             operatorChecker(x);
             if(x.equals("("));
@@ -29,14 +30,15 @@ public class ExpressionEvaluator {
             else if(x.equals("x"))    operators.push(x);
             else if(x.equals("/"))    operators.push(x);
             else if(x.equals("sqrt")) operators.push(x);
-            else if(x.equals(")")){
-                String operator=operators.pop();
-                double operand=operands.pop();
-                if(operator.equals("+"))         operand=operands.pop()+operand;
-                else if(operator.equals("-"))    operand=operands.pop()-operand;
-                else if(operator.equals("x"))    operand=operands.pop()*operand;
-                else if(operator.equals("/"))    operand=operands.pop()/operand;
-                else if(operator.equals("sqrt")) operand=Math.sqrt(operand);
+            else if(x.equals(")")) {
+                if(operators.size()>operands.size()) throw new RuntimeException(errorMessage);
+                String operator = operators.pop();
+                double operand = operands.pop();
+                if (operator.equals("+")) operand = operands.pop() + operand;
+                else if (operator.equals("-")) operand = operands.pop() - operand;
+                else if (operator.equals("x")) operand = operands.pop() * operand;
+                else if (operator.equals("/")) operand = operands.pop() / operand;
+                else if (operator.equals("sqrt")) operand = Math.sqrt(operand);
                 operands.push(operand);
             }
             else operands.push(parseDouble(x));
@@ -74,7 +76,7 @@ public class ExpressionEvaluator {
     /**
      * main error message that ends in output stream if input is not as expected
      */
-    public static String errorMessage = "Unsupported format! " +
+    public static String errorMessage = "Unsupported format!" +
             "\nNOTE: Please use this reference: ( a + ( b - ( c * ( d / ( sqrt e ) ) ) ) )" +
             "\na, b, c, d, e - real number values" +
             "\nThe order of operators You use in expression is not important but note that n-operators need n-bracket pairs";

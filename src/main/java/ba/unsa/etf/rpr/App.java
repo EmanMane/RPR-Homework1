@@ -16,15 +16,19 @@ public class App
      * @param args array of strings in format ( a + ( b - ( c * ( d / ( sqrt e ) ) ) ) )
      */
     public static void main(String[] args){
-        if (!Objects.equals(args[0], "(")){
-            throw new RuntimeException(errorMessage);
+        try {
+            if (args.length < 4 || !Objects.equals(args[0], "(")) {
+                throw new RuntimeException(errorMessage);
+            }
+            StringBuilder input = new StringBuilder("");
+            for (String s : args) {
+                operatorChecker(s);
+                input.append(s).append(" ");
+            }
+            double result = evaluate(String.valueOf(input));
+            System.out.println("The result using \"Dijkstra's Algorithm for expression evaluation\" is " + result);
+        }catch(Exception e) {
+            System.out.println(e);
         }
-        StringBuilder input = new StringBuilder("");
-        for(String s : args) {
-            operatorChecker(s);
-            input.append(s).append(" ");
-        }
-        double result = evaluate(String.valueOf(input));
-        System.out.println("The result using \"Dijkstra's Algorithm for expression evaluation\" is " + result);
     }
 }
