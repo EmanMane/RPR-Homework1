@@ -64,9 +64,6 @@ public class ExpressionEvaluator {
      */
     public static boolean isNumeric(String string) {
         double intValue;
-        if (string == null || string.equals("")) {
-            return false;
-        }
         try {
             intValue = Double.parseDouble(string);
             return true;
