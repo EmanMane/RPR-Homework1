@@ -20,20 +20,22 @@ public class ExpressionEvaluator {
      * evaluate method that receives a string and calculates its value using Dijkstra's Algorithm
      */
     public static double evaluate(String s){
+        int bracketCheck=0,bracketClosed=0,operatorCounter=0,operatorCache=0;
         operators.removeAllElements();
         operands.removeAllElements();
         String[] arrOfStr = s.split(" ");
         if(arrOfStr.length<4) throw new RuntimeException(errorMessage);
         for(String x : arrOfStr){
             operatorChecker(x);
-            if(x.equals("("));
-            else if(x.equals("+"))    operators.push(x);
-            else if(x.equals("-"))    operators.push(x);
-            else if(x.equals("x"))    operators.push(x);
-            else if(x.equals("/"))    operators.push(x);
-            else if(x.equals("sqrt")) operators.push(x);
+            if(x.equals("("))         {bracketCheck++; operatorCache=0;}
+            else if(x.equals("+"))    {operators.push(x); operatorCounter++; operatorCache++;}
+            else if(x.equals("-"))    {operators.push(x); operatorCounter++; operatorCache++;}
+            else if(x.equals("x"))    {operators.push(x); operatorCounter++; operatorCache++;}
+            else if(x.equals("/"))    {operators.push(x); operatorCounter++; operatorCache++;}
+            else if(x.equals("sqrt")) {operators.push(x); operatorCounter++; operatorCache++;}
             else if(x.equals(")")){
-                if(operators.size()>operands.size()) throw new RuntimeException(errorMessage);
+                bracketCheck--; bracketClosed++;
+                if(operators.size()>operands.size() || operatorCache!=1) throw new RuntimeException(errorMessage);
                 String operator = operators.pop();
                 double operand = operands.pop();
                 if (operator.equals("+")) operand = operands.pop() + operand;
@@ -44,7 +46,9 @@ public class ExpressionEvaluator {
                 operands.push(operand);
             }
             else operands.push(parseDouble(x));
+            if(bracketCheck<operators.size()) throw new RuntimeException(errorMessage);
         }
+        if(bracketCheck!=0 || operatorCounter!=bracketClosed) throw new RuntimeException(errorMessage);
         return operands.pop();
     }
 

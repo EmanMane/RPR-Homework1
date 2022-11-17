@@ -72,6 +72,76 @@ class ExpressionEvaluatorTest {
     }
 
     @Test
+    void testEvaluate10() {
+        assertThrows(RuntimeException.class, () -> {
+            double x = ExpressionEvaluator.evaluate("( 1 + 2 + 3 )");
+        });
+    }
+
+    @Test
+    void testEvaluate11() {
+        double x = ExpressionEvaluator.evaluate("( ( sqrt 25 ) + ( sqrt 100 ) )");
+        assertEquals(15,x);
+    }
+
+    @Test
+    void testEvaluate12() {
+        assertThrows(RuntimeException.class, () -> {
+            double x = ExpressionEvaluator.evaluate("( sqrt 25 + ( sqrt 100 ) )");
+        });
+    }
+
+    @Test
+    void testEvaluate13() {
+        assertThrows(RuntimeException.class, () -> {
+            double x = ExpressionEvaluator.evaluate("( 1 + ( 3 x 2 ) ) )");
+        });
+    }
+
+    @Test
+    void testEvaluate14() {
+        double x = ExpressionEvaluator.evaluate("( ( sqrt 1 ) + ( 3 x ( ( sqrt 4 ) - ( 3 / ( 1 + ( sqrt 4 ) ) ) ) ) )");
+        assertEquals(4,x);
+    }
+
+    @Test
+    void testEvaluate15() {
+        assertThrows(RuntimeException.class, () -> {
+            double x = ExpressionEvaluator.evaluate("( ( ( 2 + 3 ) + sqrt 9 ) )");
+        });
+    }
+
+    @Test
+    void testEvaluate16() {
+        assertThrows(RuntimeException.class, () -> {
+            double x = ExpressionEvaluator.evaluate("( ( ( ( 2 + 3 + 4 ) ) ) )");
+        });
+    }
+
+
+    @Test
+    void testEvaluate17() {
+        assertThrows(RuntimeException.class, () -> {
+            double x = ExpressionEvaluator.evaluate("( ( ( ( ( 2 + 3 ) ) ) )");
+        });
+    }
+
+    @Test
+    void testEvaluate18() {
+        assertThrows(RuntimeException.class, () -> {
+            double x = ExpressionEvaluator.evaluate("( ( ( ( 2 + 3 ) ) ) ) )");
+        });
+    }
+
+    @Test
+    void testEvaluate19() {
+        assertThrows(RuntimeException.class, () -> {
+            double x = ExpressionEvaluator.evaluate("( ( 2 + 3 + 4 ) )");
+        });
+    }
+
+
+    @Test
     void testIsNumeric1() {
         assertEquals(isNumeric("8.2993"),true);
     }

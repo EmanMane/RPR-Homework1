@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="ba.unsa.etf.rpr.ExpressionEvaluatorTest" time="0.091" tests="12" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="ba.unsa.etf.rpr.ExpressionEvaluatorTest" time="0.093" tests="17" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="19"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-19\bin"/>
-    <property name="sun.java.command" value="C:\Users\User\AppData\Local\Temp\surefire7643659942499612697\surefirebooter8946364359707391931.jar C:\Users\User\AppData\Local\Temp\surefire7643659942499612697 2022-11-14T20-46-19_301-jvmRun1 surefire8761339138909082261tmp surefire_0635293255451765643tmp"/>
+    <property name="sun.java.command" value="C:\Users\User\AppData\Local\Temp\surefire17785900969415837065\surefirebooter423765386896401201.jar C:\Users\User\AppData\Local\Temp\surefire17785900969415837065 2022-11-17T18-55-10_231-jvmRun1 surefire14964621466360129991tmp surefire_08411093843469835815tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\User\Desktop\JavaProjekti\zadaca1\target\test-classes;C:\Users\User\Desktop\JavaProjekti\zadaca1\target\classes;C:\Users\User\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\User\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\User\.m2\repository\org\junit\jupiter\junit-jupiter\5.9.0\junit-jupiter-5.9.0.jar;C:\Users\User\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.0\junit-jupiter-api-5.9.0.jar;C:\Users\User\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\User\.m2\repository\org\junit\platform\junit-platform-commons\1.9.0\junit-platform-commons-1.9.0.jar;C:\Users\User\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\User\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.9.0\junit-jupiter-params-5.9.0.jar;C:\Users\User\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.0\junit-jupiter-engine-5.9.0.jar;C:\Users\User\.m2\repository\org\junit\platform\junit-platform-engine\1.9.0\junit-platform-engine-1.9.0.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\User\AppData\Local\Temp\surefire7643659942499612697\surefirebooter8946364359707391931.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\User\AppData\Local\Temp\surefire17785900969415837065\surefirebooter423765386896401201.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="19+36-2238"/>
@@ -58,16 +58,21 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="63.0"/>
   </properties>
-  <testcase name="testIsNumeric1" classname="ba.unsa.etf.rpr.ExpressionEvaluatorTest" time="0.044"/>
-  <testcase name="testIsNumeric2" classname="ba.unsa.etf.rpr.ExpressionEvaluatorTest" time="0.001"/>
-  <testcase name="testEvaluate1" classname="ba.unsa.etf.rpr.ExpressionEvaluatorTest" time="0.002"/>
-  <testcase name="testEvaluate2" classname="ba.unsa.etf.rpr.ExpressionEvaluatorTest" time="0.001"/>
-  <testcase name="testEvaluate3" classname="ba.unsa.etf.rpr.ExpressionEvaluatorTest" time="0.004"/>
-  <testcase name="testEvaluate4" classname="ba.unsa.etf.rpr.ExpressionEvaluatorTest" time="0.002"/>
-  <testcase name="testEvaluate5" classname="ba.unsa.etf.rpr.ExpressionEvaluatorTest" time="0.002"/>
-  <testcase name="testEvaluate6" classname="ba.unsa.etf.rpr.ExpressionEvaluatorTest" time="0.002"/>
-  <testcase name="testEvaluate7" classname="ba.unsa.etf.rpr.ExpressionEvaluatorTest" time="0.002"/>
-  <testcase name="testEvaluate8" classname="ba.unsa.etf.rpr.ExpressionEvaluatorTest" time="0.001"/>
-  <testcase name="testEvaluate9" classname="ba.unsa.etf.rpr.ExpressionEvaluatorTest" time="0.003"/>
-  <testcase name="testOperatorChecker" classname="ba.unsa.etf.rpr.ExpressionEvaluatorTest" time="0.002"/>
+  <testcase name="testEvaluate10" classname="ba.unsa.etf.rpr.ExpressionEvaluatorTest" time="0.046"/>
+  <testcase name="testEvaluate11" classname="ba.unsa.etf.rpr.ExpressionEvaluatorTest" time="0.016"/>
+  <testcase name="testEvaluate12" classname="ba.unsa.etf.rpr.ExpressionEvaluatorTest" time="0"/>
+  <testcase name="testEvaluate13" classname="ba.unsa.etf.rpr.ExpressionEvaluatorTest" time="0"/>
+  <testcase name="testEvaluate14" classname="ba.unsa.etf.rpr.ExpressionEvaluatorTest" time="0"/>
+  <testcase name="testIsNumeric1" classname="ba.unsa.etf.rpr.ExpressionEvaluatorTest" time="0"/>
+  <testcase name="testIsNumeric2" classname="ba.unsa.etf.rpr.ExpressionEvaluatorTest" time="0"/>
+  <testcase name="testEvaluate1" classname="ba.unsa.etf.rpr.ExpressionEvaluatorTest" time="0"/>
+  <testcase name="testEvaluate2" classname="ba.unsa.etf.rpr.ExpressionEvaluatorTest" time="0"/>
+  <testcase name="testEvaluate3" classname="ba.unsa.etf.rpr.ExpressionEvaluatorTest" time="0"/>
+  <testcase name="testEvaluate4" classname="ba.unsa.etf.rpr.ExpressionEvaluatorTest" time="0"/>
+  <testcase name="testEvaluate5" classname="ba.unsa.etf.rpr.ExpressionEvaluatorTest" time="0"/>
+  <testcase name="testEvaluate6" classname="ba.unsa.etf.rpr.ExpressionEvaluatorTest" time="0"/>
+  <testcase name="testEvaluate7" classname="ba.unsa.etf.rpr.ExpressionEvaluatorTest" time="0"/>
+  <testcase name="testEvaluate8" classname="ba.unsa.etf.rpr.ExpressionEvaluatorTest" time="0"/>
+  <testcase name="testEvaluate9" classname="ba.unsa.etf.rpr.ExpressionEvaluatorTest" time="0"/>
+  <testcase name="testOperatorChecker" classname="ba.unsa.etf.rpr.ExpressionEvaluatorTest" time="0.015"/>
 </testsuite>
