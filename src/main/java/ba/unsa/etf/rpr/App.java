@@ -26,6 +26,7 @@ public class App
                 input.append(s).append(" ");
             }
             double result = evaluate(String.valueOf(input));
+            if(Objects.equals(result,Double.POSITIVE_INFINITY) || Objects.equals(result,Double.NEGATIVE_INFINITY)) throw new RuntimeException("Zero is not dividable!");
             System.out.println("The result using \"Dijkstra's Algorithm for expression evaluation\" is " + result);
         }catch(Exception e) {
             System.out.println(e);
