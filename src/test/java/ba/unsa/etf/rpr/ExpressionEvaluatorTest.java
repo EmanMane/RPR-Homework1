@@ -18,7 +18,7 @@ class ExpressionEvaluatorTest {
 
     @Test
     void testEvaluate2() {
-        double x = ExpressionEvaluator.evaluate("( 1 + ( 3 x ( 2 - ( 3 / ( 1 + ( sqrt 4 ) ) ) ) ) )");
+        double x = ExpressionEvaluator.evaluate("( 1 + ( 3 x ( 2 - ( 3 / ( 1 + sqrt ( 4 ) ) ) ) ) )");
         assertEquals(4,x);
     }
 
@@ -80,8 +80,9 @@ class ExpressionEvaluatorTest {
 
     @Test
     void testEvaluate11() {
-        double x = ExpressionEvaluator.evaluate("( ( sqrt 25 ) + ( sqrt 100 ) )");
-        assertEquals(15,x);
+        assertThrows(RuntimeException.class, () -> {
+            double x = ExpressionEvaluator.evaluate("( ( sqrt 25 ) + ( sqrt 100 ) )");
+        });
     }
 
     @Test
@@ -100,7 +101,7 @@ class ExpressionEvaluatorTest {
 
     @Test
     void testEvaluate14() {
-        double x = ExpressionEvaluator.evaluate("( ( sqrt 1 ) + ( 3 x ( ( sqrt 4 ) - ( 3 / ( 1 + ( sqrt 4 ) ) ) ) ) )");
+        double x = ExpressionEvaluator.evaluate("( sqrt ( 1 ) + ( 3 x ( sqrt ( 4 ) - ( 3 / ( 1 + sqrt ( 4 ) ) ) ) ) )");
         assertEquals(4,x);
     }
 
@@ -140,6 +141,11 @@ class ExpressionEvaluatorTest {
         });
     }
 
+    @Test
+    void testEvaluate20() {
+        double x = ExpressionEvaluator.evaluate("( 1 + sqrt ( 4 ) )");
+        assertEquals(3,x);
+    }
 
     @Test
     void testIsNumeric1() {

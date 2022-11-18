@@ -20,22 +20,42 @@ public class ExpressionEvaluator {
      * evaluate method that receives a string and calculates its value using Dijkstra's Algorithm
      */
     public static double evaluate(String s){
-        int bracketCheck=0,bracketClosed=0,operatorCounter=0,operatorCache=0;
+        int bracketCheck=0,sqrtCheck=0,operatorCounter=0,operandCounter=0,operatorCache=0;
         operators.removeAllElements();
         operands.removeAllElements();
         String[] arrOfStr = s.split(" ");
         if(arrOfStr.length<4) throw new RuntimeException(errorMessage);
         for(String x : arrOfStr){
             operatorChecker(x);
-            if(x.equals("("))         {bracketCheck++; operatorCache=0;}
-            else if(x.equals("+"))    {operators.push(x); operatorCounter++; operatorCache++;}
-            else if(x.equals("-"))    {operators.push(x); operatorCounter++; operatorCache++;}
-            else if(x.equals("x"))    {operators.push(x); operatorCounter++; operatorCache++;}
-            else if(x.equals("/"))    {operators.push(x); operatorCounter++; operatorCache++;}
-            else if(x.equals("sqrt")) {operators.push(x); operatorCounter++; operatorCache++;}
+            if(x.equals("(")){
+                if(operatorCache>2) throw new RuntimeException(errorMessage);
+                if(sqrtCheck==1) sqrtCheck++;
+                bracketCheck++; operatorCache=0;
+            }
+            else if(x.equals("+")){
+                if(sqrtCheck>0) throw new RuntimeException(errorMessage);
+                operators.push(x); operatorCounter++; operatorCache++;
+            }
+            else if(x.equals("-")){
+                if(sqrtCheck>0) throw new RuntimeException(errorMessage);
+                operators.push(x); operatorCounter++; operatorCache++;
+            }
+            else if(x.equals("x")){
+                if(sqrtCheck>0) throw new RuntimeException(errorMessage);
+                operators.push(x); operatorCounter++; operatorCache++;
+            }
+            else if(x.equals("/")){
+                if(sqrtCheck>0) throw new RuntimeException(errorMessage);
+                operators.push(x); operatorCounter++; operatorCache++;
+            }
+            else if(x.equals("sqrt")){
+                if(sqrtCheck>0) throw new RuntimeException(errorMessage);
+                operators.push(x); sqrtCheck++;
+            }
             else if(x.equals(")")){
-                bracketCheck--; bracketClosed++;
-                if(operators.size()>operands.size() || operatorCache!=1) throw new RuntimeException(errorMessage);
+                if(operatorCache>1) throw new RuntimeException(errorMessage);
+                if(sqrtCheck>0 && sqrtCheck!=3) throw new RuntimeException(errorMessage);
+                sqrtCheck=0;
                 String operator = operators.pop();
                 double operand = operands.pop();
                 if (operator.equals("+")) operand = operands.pop() + operand;
@@ -45,10 +65,13 @@ public class ExpressionEvaluator {
                 else if (operator.equals("sqrt")) operand = Math.sqrt(operand);
                 operands.push(operand);
             }
-            else operands.push(parseDouble(x));
-            if(bracketCheck<operators.size()) throw new RuntimeException(errorMessage);
+            else {
+                operands.push(parseDouble(x));
+                if(sqrtCheck==2) sqrtCheck++; operandCounter++;
+            }
+            if(bracketCheck<operatorCounter) throw new RuntimeException(errorMessage);
         }
-        if(bracketCheck!=0 || operatorCounter!=bracketClosed) throw new RuntimeException(errorMessage);
+        if(operatorCounter!=operandCounter-1) throw new RuntimeException(errorMessage);
         return operands.pop();
     }
 
@@ -80,8 +103,8 @@ public class ExpressionEvaluator {
      * main error message that ends in output stream if input is not as expected
      */
     public static String errorMessage = "Unsupported format!" +
-            "\nNOTE: Please use this reference: ( a + ( b - ( c * ( d / ( sqrt e ) ) ) ) )" +
-            "\na, b, c, d, e - real number values" +
+            "\nNOTE: Please use this reference: ( a + ( b - ( c * ( d / e ) ) ) )" +
+            "\na, b, c, d, e - real number values, can be represented as a = sqrt ( 4 )" +
             "\nThe order of operators You use in expression is not important but note that n-operators need n-bracket pairs";
 
 }
