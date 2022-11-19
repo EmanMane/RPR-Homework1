@@ -12,27 +12,27 @@ class ExpressionEvaluatorTest {
 
     @Test
     void testEvaluate1() {
-        double x = ExpressionEvaluator.evaluate("( 1 + ( 3 x 2 ) )");
+        double x = ExpressionEvaluator.evaluate("( 1 + ( 3 * 2 ) )");
         assertEquals(7,x);
     }
 
     @Test
     void testEvaluate2() {
-        double x = ExpressionEvaluator.evaluate("( 1 + ( 3 x ( 2 - ( 3 / ( 1 + sqrt ( 4 ) ) ) ) ) )");
+        double x = ExpressionEvaluator.evaluate("( 1 + ( 3 * ( 2 - ( 3 / ( 1 + sqrt ( 4 ) ) ) ) ) )");
         assertEquals(4,x);
     }
 
     @Test
     void testEvaluate3() {
         assertThrows(RuntimeException.class, () -> {
-            double x = ExpressionEvaluator.evaluate("( 1 + ( 3 x 2 ) }");
+            double x = ExpressionEvaluator.evaluate("( 1 + ( 3 * 2 ) }");
         },errorMessage);
     }
 
     @Test
     void testEvaluate4() {
         assertThrows(RuntimeException.class, () -> {
-            double x = ExpressionEvaluator.evaluate("( 1 + ( 3 x 2 ))");
+            double x = ExpressionEvaluator.evaluate("( 1 + ( 3 * 2 ))");
         },errorMessage);
     }
 
@@ -95,13 +95,13 @@ class ExpressionEvaluatorTest {
     @Test
     void testEvaluate13() {
         assertThrows(RuntimeException.class, () -> {
-            double x = ExpressionEvaluator.evaluate("( 1 + ( 3 x 2 ) ) )");
+            double x = ExpressionEvaluator.evaluate("( 1 + ( 3 * 2 ) ) )");
         });
     }
 
     @Test
     void testEvaluate14() {
-        double x = ExpressionEvaluator.evaluate("( sqrt ( 1 ) + ( 3 x ( sqrt ( 4 ) - ( 3 / ( 1 + sqrt ( 4 ) ) ) ) ) )");
+        double x = ExpressionEvaluator.evaluate("( sqrt ( 1 ) + ( 3 * ( sqrt ( 4 ) - ( 3 / ( 1 + sqrt ( 4 ) ) ) ) ) )");
         assertEquals(4,x);
     }
 
@@ -145,6 +145,25 @@ class ExpressionEvaluatorTest {
     void testEvaluate20() {
         double x = ExpressionEvaluator.evaluate("( 1 + sqrt ( 4 ) )");
         assertEquals(3,x);
+    }
+
+    void testEvaluate21() {
+        assertThrows(RuntimeException.class, () -> {
+            double x = ExpressionEvaluator.evaluate("( 2 + + 4 )");
+        });
+    }
+
+    @Test
+    void testEvaluate22() {
+        assertThrows(RuntimeException.class, () -> {
+            double x = ExpressionEvaluator.evaluate("( 1 + ( sqrt ( 4 ) + ) )");
+        });
+    }
+
+    @Test
+    void testEvaluate23() {
+        double x = ExpressionEvaluator.evaluate("( sqrt ( 1 ) + ( sqrt ( 4 ) + sqrt ( 25 ) ) )");
+        assertEquals(8,x);
     }
 
     @Test

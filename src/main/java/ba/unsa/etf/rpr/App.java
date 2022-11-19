@@ -13,7 +13,7 @@ public class App
 {
     /**
      * Main method of our App
-     * @param args string in format ( a + ( b - ( c * ( d / ( sqrt e ) ) ) ) )
+     * @param args string in format ( a + ( b - ( c * ( d / sqrt ( e ) ) ) ) )
      */
     public static void main(String[] args){
         try {
