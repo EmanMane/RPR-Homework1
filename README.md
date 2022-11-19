@@ -21,7 +21,3 @@ An input class with a main method must be declared in the maven jar plugin so th
 In case the entered expression is not arithmetically valid, the program should throw an exception of type RuntimeException. One of the unit tests must cover this case.
 It is only necessary to implement the algorithm for expressions delimited by parentheses and which does not support operator precedence.
 You can assume that all expressions will be space-separated for easier parsing of the input expression. The expression ( 1 + ( 5 * 20 ) ) is considered valid while the expression ( 1 + ( 5* 20)) is considered invalid. This is one convenience that will help you to code your homework more easily.
-
-IMPORTANT NOTE:
-Because of the input through the command line, the star operator will be replaced with 'x' (shell errors, basically the star symbol has a functionality in cmd and cannot be considered as input.
-We could bypass this by writing "a '* 'b" but this simply looks ugly
